@@ -1,0 +1,40 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://maps/menu_inicial.gd" type="Script" id=1]
+
+[node name="menu_inicial" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button_iniciar" type="Button" parent="."]
+anchor_top = 0.33
+anchor_right = 0.29
+anchor_bottom = 0.405
+margin_left = 22.0
+margin_top = -1.52588e-05
+margin_right = 0.039978
+margin_bottom = -1.52588e-05
+text = "Iniciar"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="demo_tester" type="Label" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -47.0
+text = "Teste Demo de 4 dias, pode haver bugs."
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+[connection signal="pressed" from="Button_iniciar" to="." method="_on_Button_iniciar_pressed"]
