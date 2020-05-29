@@ -19,6 +19,7 @@ func _ready():
 func start_times():
 	time_sumir.start()
 	time_surgir.start()
+	time_end.start()
 	ativo = true
 	show()
 

@@ -182,7 +182,6 @@ material/0 = SubResource( 13 )
 [node name="CollisionShape" type="CollisionShape" parent="pistal/porta"]
 transform = Transform( 1, 0, 0, 0, 2.4069, 0, 0, 0, 1, 0, 2.408, 0 )
 shape = SubResource( 14 )
-disabled = true
 
 [node name="pegador" type="Spatial" parent="pistal/porta"]
 transform = Transform( 0.999999, 0, 0, 0, 1, 0, 0, 0, 1, 0.845797, 2.27537, 2.49675 )
