@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Map_seme_procedural/Pilar.gd" type="Script" id=1]
+
+[sub_resource type="BoxShape" id=2]
+
+[sub_resource type="CubeMesh" id=1]
+
+[sub_resource type="SpatialMaterial" id=3]
+albedo_color = Color( 1, 0, 0, 1 )
+emission_enabled = true
+emission = Color( 1, 1, 1, 1 )
+emission_energy = 1.5
+emission_operator = 0
+emission_on_uv2 = false
+
+[node name="Pilar" type="KinematicBody"]
+transform = Transform( 1, 0, 0, 0, 5, 0, 0, 0, 1, 0, -80, 0 )
+collision_layer = 2
+collision_mask = 2
+script = ExtResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 2, 0, 0, 0, 15, 0, 0, 0, 2, 0, 15.3755, 0 )
+shape = SubResource( 2 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 2, 0, 0, 0, 15, 0, 0, 0, 2, 0, 10.6715, 0 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 3 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true

@@ -10,6 +10,22 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="controles" type="Label" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -181.188
+margin_top = 21.5123
+margin_right = -25.1877
+margin_bottom = 86.5123
+text = "Controles:
+W-A-S-D Movimentação 
+E - Interação
+F - Lanterna"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Button_iniciar" type="Button" parent="."]
 anchor_top = 0.33
 anchor_right = 0.29

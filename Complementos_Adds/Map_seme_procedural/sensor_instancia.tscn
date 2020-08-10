@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Map_seme_procedural/sensor_instancia.gd" type="Script" id=1]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 0.160928, 9.7192, 5.86254 )
+
+[node name="sensor_instancia" type="Area"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 0.32179, 0, 6, 0 )
+script = ExtResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.23369, 5.11957, 0 )
+shape = SubResource( 1 )

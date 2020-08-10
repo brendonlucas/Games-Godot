@@ -1,0 +1,1351 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://Menu_pausa/Menu_pause.tscn" type="PackedScene" id=1]
+[ext_resource path="res://HUDs/HUD_status.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Processos do map_teste.gd" type="Script" id=3]
+[ext_resource path="res://player/Player_v4.tscn" type="PackedScene" id=5]
+[ext_resource path="res://player/Player_v4.gd" type="Script" id=6]
+[ext_resource path="res://player/Camerat.tscn" type="PackedScene" id=7]
+[ext_resource path="res://player/Camera_target.gd" type="Script" id=8]
+
+[sub_resource type="CubeMesh" id=1]
+
+[sub_resource type="SpatialMaterial" id=2]
+metallic = 1.0
+metallic_specular = 1.0
+roughness = 0.5
+emission_enabled = true
+emission = Color( 0.14902, 0, 0, 1 )
+emission_energy = 1.0
+emission_operator = 0
+emission_on_uv2 = false
+
+[sub_resource type="ConcavePolygonShape" id=3]
+data = PoolVector3Array( -1, 1, 1, 1, 1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, 1, 1, -1, -1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, 1, 1, 1, -1, 1, 1, 1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1, -1, -1, -1, 1, 1, -1, 1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1 )
+
+[sub_resource type="BoxShape" id=4]
+extents = Vector3( 1, 2.14842, 0.0285594 )
+
+[sub_resource type="CubeMesh" id=5]
+
+[sub_resource type="SpatialMaterial" id=6]
+roughness = 0.0
+emission_enabled = true
+emission = Color( 1, 0, 0, 1 )
+emission_energy = 0.72
+emission_operator = 0
+emission_on_uv2 = false
+refraction_enabled = true
+refraction_scale = 1.0
+refraction_texture_channel = 0
+
+[sub_resource type="Environment" id=7]
+background_energy = 0.0
+glow_enabled = true
+glow_strength = 1.11
+glow_bloom = 0.05
+glow_blend_mode = 0
+
+[sub_resource type="SphereMesh" id=8]
+flip_faces = true
+is_hemisphere = true
+
+[sub_resource type="SpatialMaterial" id=9]
+emission_enabled = true
+emission = Color( 0.0705882, 0.454902, 0.552941, 1 )
+emission_energy = 1.0
+emission_operator = 0
+emission_on_uv2 = false
+
+[node name="map_teste" type="Spatial"]
+script = ExtResource( 3 )
+
+[node name="target" parent="." instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 40.137, 0 )
+script = ExtResource( 8 )
+
+[node name="Player_v4" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 40.1373, 0 )
+script = ExtResource( 6 )
+
+[node name="chao" type="StaticBody" parent="."]
+transform = Transform( 20, 0, 0, 0, 1, 0, 0, 0, 20, 0, 38.5377, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="chao"]
+transform = Transform( 1, 0, 0, 0, 0.145107, 0, 0, 0, 1, 0, 0, 0 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="chao"]
+transform = Transform( 1, 0, 0, 0, 0.165726, 0, 0, 0, 1, 0, 0, 0 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="chao"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.24878, -1.02942 )
+shape = SubResource( 4 )
+
+[node name="CollisionShape3" type="CollisionShape" parent="chao"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.24878, 1.01785 )
+shape = SubResource( 4 )
+
+[node name="CollisionShape4" type="CollisionShape" parent="chao"]
+transform = Transform( -0.0101402, 0, -0.999948, 0, 1, 0, 0.999948, 0, -0.0101402, 0.994363, 2.24878, 0.00459465 )
+shape = SubResource( 4 )
+
+[node name="CollisionShape5" type="CollisionShape" parent="chao"]
+transform = Transform( -0.0101402, 0, -0.999948, 0, 1, 0, 0.999948, 0, -0.0101402, -0.987017, 2.24878, -0.0161652 )
+shape = SubResource( 4 )
+
+[node name="blocks" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 3.79053, 0, 0, 0, 1, 0, 7.6865, 0 )
+
+[node name="linha" type="Spatial" parent="blocks"]
+
+[node name="block9" type="Spatial" parent="blocks/linha"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 0, -1.83694, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha/block9"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block10" type="Spatial" parent="blocks/linha"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, -8.07346, 1.80417, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha/block10"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block11" type="Spatial" parent="blocks/linha"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, -16.131, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha/block11"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block12" type="Spatial" parent="blocks/linha"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, -24.1886, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha/block12"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block16" type="Spatial" parent="blocks/linha"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, -32.2361, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha/block16"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block15" type="Spatial" parent="blocks/linha"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, -40.3096, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha/block15"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block14" type="Spatial" parent="blocks/linha"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, -48.3671, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha/block14"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block22" type="Spatial" parent="blocks/linha"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 48.3708, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha/block22"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block21" type="Spatial" parent="blocks/linha"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 40.3132, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha/block21"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block20" type="Spatial" parent="blocks/linha"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 32.2657, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha/block20"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block19" type="Spatial" parent="blocks/linha"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 24.1922, 5.83354, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha/block19"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block18" type="Spatial" parent="blocks/linha"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 16.1347, -2.35021, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha/block18"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block17" type="Spatial" parent="blocks/linha"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 8.07709, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha/block17"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="linha2" type="Spatial" parent="blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.08936 )
+
+[node name="block9" type="Spatial" parent="blocks/linha2"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 0, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha2/block9"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block10" type="Spatial" parent="blocks/linha2"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, -8.07346, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha2/block10"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block11" type="Spatial" parent="blocks/linha2"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, -16.131, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha2/block11"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block12" type="Spatial" parent="blocks/linha2"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, -24.1886, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha2/block12"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block16" type="Spatial" parent="blocks/linha2"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, -32.2361, -2.61483, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha2/block16"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block15" type="Spatial" parent="blocks/linha2"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, -40.3096, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha2/block15"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block14" type="Spatial" parent="blocks/linha2"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, -48.3671, 2.70887, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha2/block14"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block22" type="Spatial" parent="blocks/linha2"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 48.3708, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha2/block22"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block21" type="Spatial" parent="blocks/linha2"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 40.3132, 4.46466, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha2/block21"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block20" type="Spatial" parent="blocks/linha2"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 32.2657, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha2/block20"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block19" type="Spatial" parent="blocks/linha2"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 24.1922, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha2/block19"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block18" type="Spatial" parent="blocks/linha2"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 16.1347, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha2/block18"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block17" type="Spatial" parent="blocks/linha2"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 8.07709, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha2/block17"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="linha4" type="Spatial" parent="blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16.2003 )
+
+[node name="block9" type="Spatial" parent="blocks/linha4"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 0, 3.57994, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha4/block9"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block10" type="Spatial" parent="blocks/linha4"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, -8.07346, -2.51611, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha4/block10"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block11" type="Spatial" parent="blocks/linha4"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, -16.131, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha4/block11"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block12" type="Spatial" parent="blocks/linha4"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, -24.1886, 2.35534, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha4/block12"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block16" type="Spatial" parent="blocks/linha4"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, -32.2361, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha4/block16"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block15" type="Spatial" parent="blocks/linha4"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, -40.3096, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha4/block15"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block14" type="Spatial" parent="blocks/linha4"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, -48.3671, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha4/block14"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block22" type="Spatial" parent="blocks/linha4"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 48.3708, -2.05424, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha4/block22"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block21" type="Spatial" parent="blocks/linha4"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 40.3132, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha4/block21"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block20" type="Spatial" parent="blocks/linha4"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 32.2657, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha4/block20"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block19" type="Spatial" parent="blocks/linha4"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 24.1922, 2.27454, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha4/block19"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block18" type="Spatial" parent="blocks/linha4"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 16.1347, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha4/block18"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block17" type="Spatial" parent="blocks/linha4"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 8.07709, -2.5135, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha4/block17"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="linha3" type="Spatial" parent="blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 24.2896 )
+
+[node name="block9" type="Spatial" parent="blocks/linha3"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 0, 1.03447, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha3/block9"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block10" type="Spatial" parent="blocks/linha3"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, -8.07346, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha3/block10"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block11" type="Spatial" parent="blocks/linha3"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, -16.131, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha3/block11"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block12" type="Spatial" parent="blocks/linha3"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, -24.1886, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha3/block12"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block16" type="Spatial" parent="blocks/linha3"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, -32.2361, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha3/block16"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block15" type="Spatial" parent="blocks/linha3"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, -40.3096, 1.10192, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha3/block15"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block14" type="Spatial" parent="blocks/linha3"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, -48.3671, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha3/block14"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block22" type="Spatial" parent="blocks/linha3"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 48.3708, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha3/block22"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block21" type="Spatial" parent="blocks/linha3"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 40.3132, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha3/block21"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block20" type="Spatial" parent="blocks/linha3"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 32.2657, -1.9904, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha3/block20"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block19" type="Spatial" parent="blocks/linha3"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 24.1922, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha3/block19"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block18" type="Spatial" parent="blocks/linha3"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 16.1347, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha3/block18"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block17" type="Spatial" parent="blocks/linha3"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 8.07709, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha3/block17"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="linha8" type="Spatial" parent="blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 32.4642 )
+
+[node name="block9" type="Spatial" parent="blocks/linha8"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 0, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha8/block9"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block10" type="Spatial" parent="blocks/linha8"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, -8.07346, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha8/block10"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block11" type="Spatial" parent="blocks/linha8"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, -16.131, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha8/block11"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block12" type="Spatial" parent="blocks/linha8"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, -24.1886, -2.30755, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha8/block12"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block16" type="Spatial" parent="blocks/linha8"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, -32.2361, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha8/block16"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block15" type="Spatial" parent="blocks/linha8"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, -40.3096, 4.41578, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha8/block15"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block14" type="Spatial" parent="blocks/linha8"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, -48.3671, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha8/block14"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block22" type="Spatial" parent="blocks/linha8"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 48.3708, 3.18501, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha8/block22"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block21" type="Spatial" parent="blocks/linha8"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 40.3132, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha8/block21"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block20" type="Spatial" parent="blocks/linha8"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 32.2657, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha8/block20"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block19" type="Spatial" parent="blocks/linha8"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 24.1922, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha8/block19"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block18" type="Spatial" parent="blocks/linha8"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 16.1347, -2.54091, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha8/block18"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block17" type="Spatial" parent="blocks/linha8"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 8.07709, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha8/block17"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="linha7" type="Spatial" parent="blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 40.5536 )
+
+[node name="block9" type="Spatial" parent="blocks/linha7"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 0, 4.31139, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha7/block9"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block10" type="Spatial" parent="blocks/linha7"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, -8.07346, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha7/block10"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block11" type="Spatial" parent="blocks/linha7"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, -16.131, 2.5945, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha7/block11"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block12" type="Spatial" parent="blocks/linha7"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, -24.1886, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha7/block12"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block16" type="Spatial" parent="blocks/linha7"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, -32.2361, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha7/block16"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block15" type="Spatial" parent="blocks/linha7"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, -40.3096, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha7/block15"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block14" type="Spatial" parent="blocks/linha7"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, -48.3671, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha7/block14"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block22" type="Spatial" parent="blocks/linha7"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 48.3708, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha7/block22"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block21" type="Spatial" parent="blocks/linha7"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 40.3132, 4.60899, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha7/block21"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block20" type="Spatial" parent="blocks/linha7"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 32.2657, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha7/block20"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block19" type="Spatial" parent="blocks/linha7"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 24.1922, 4.36406, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha7/block19"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block18" type="Spatial" parent="blocks/linha7"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 16.1347, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha7/block18"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block17" type="Spatial" parent="blocks/linha7"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 8.07709, -3.41667, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha7/block17"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="linha6" type="Spatial" parent="blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 48.6645 )
+
+[node name="block9" type="Spatial" parent="blocks/linha6"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 0, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha6/block9"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block10" type="Spatial" parent="blocks/linha6"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, -8.07346, -2.07919, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha6/block10"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block11" type="Spatial" parent="blocks/linha6"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, -16.131, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha6/block11"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block12" type="Spatial" parent="blocks/linha6"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, -24.1886, 4.32265, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha6/block12"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block16" type="Spatial" parent="blocks/linha6"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, -32.2361, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha6/block16"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block15" type="Spatial" parent="blocks/linha6"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, -40.3096, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha6/block15"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block14" type="Spatial" parent="blocks/linha6"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, -48.3671, 5.99343, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha6/block14"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block22" type="Spatial" parent="blocks/linha6"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 48.3708, 6.18782, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha6/block22"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block21" type="Spatial" parent="blocks/linha6"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 40.3132, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha6/block21"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block20" type="Spatial" parent="blocks/linha6"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 32.2657, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha6/block20"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block19" type="Spatial" parent="blocks/linha6"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 24.1922, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha6/block19"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block18" type="Spatial" parent="blocks/linha6"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 16.1347, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha6/block18"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block17" type="Spatial" parent="blocks/linha6"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 8.07709, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha6/block17"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="linha14" type="Spatial" parent="blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -48.6612 )
+
+[node name="block9" type="Spatial" parent="blocks/linha14"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 0, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha14/block9"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block10" type="Spatial" parent="blocks/linha14"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, -8.07346, -2.46574, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha14/block10"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block11" type="Spatial" parent="blocks/linha14"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, -16.131, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha14/block11"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block12" type="Spatial" parent="blocks/linha14"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, -24.1886, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha14/block12"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block16" type="Spatial" parent="blocks/linha14"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, -32.2361, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha14/block16"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block15" type="Spatial" parent="blocks/linha14"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, -40.3096, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha14/block15"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block14" type="Spatial" parent="blocks/linha14"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, -48.3671, 6.33467, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha14/block14"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block22" type="Spatial" parent="blocks/linha14"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 48.3708, 5.62148, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha14/block22"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block21" type="Spatial" parent="blocks/linha14"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 40.3132, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha14/block21"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block20" type="Spatial" parent="blocks/linha14"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 32.2657, -1.58127, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha14/block20"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block19" type="Spatial" parent="blocks/linha14"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 24.1922, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha14/block19"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block18" type="Spatial" parent="blocks/linha14"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 16.1347, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha14/block18"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block17" type="Spatial" parent="blocks/linha14"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 8.07709, 3.01324, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha14/block17"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="linha13" type="Spatial" parent="blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -40.5718 )
+
+[node name="block9" type="Spatial" parent="blocks/linha13"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 0, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha13/block9"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block10" type="Spatial" parent="blocks/linha13"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, -8.07346, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha13/block10"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block11" type="Spatial" parent="blocks/linha13"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, -16.131, 5.45619, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha13/block11"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block12" type="Spatial" parent="blocks/linha13"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, -24.1886, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha13/block12"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block16" type="Spatial" parent="blocks/linha13"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, -32.2361, -2.38782, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha13/block16"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block15" type="Spatial" parent="blocks/linha13"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, -40.3096, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha13/block15"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block14" type="Spatial" parent="blocks/linha13"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, -48.3671, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha13/block14"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block22" type="Spatial" parent="blocks/linha13"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 48.3708, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha13/block22"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block21" type="Spatial" parent="blocks/linha13"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 40.3132, 4.56972, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha13/block21"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block20" type="Spatial" parent="blocks/linha13"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 32.2657, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha13/block20"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block19" type="Spatial" parent="blocks/linha13"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 24.1922, 1.98755, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha13/block19"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block18" type="Spatial" parent="blocks/linha13"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 16.1347, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha13/block18"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block17" type="Spatial" parent="blocks/linha13"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 8.07709, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha13/block17"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="linha12" type="Spatial" parent="blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -32.3972 )
+
+[node name="block9" type="Spatial" parent="blocks/linha12"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 0, -2.49079, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha12/block9"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block10" type="Spatial" parent="blocks/linha12"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, -8.07346, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha12/block10"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block11" type="Spatial" parent="blocks/linha12"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, -16.131, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha12/block11"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block12" type="Spatial" parent="blocks/linha12"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, -24.1886, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha12/block12"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block16" type="Spatial" parent="blocks/linha12"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, -32.2361, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha12/block16"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block15" type="Spatial" parent="blocks/linha12"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, -40.3096, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha12/block15"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block14" type="Spatial" parent="blocks/linha12"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, -48.3671, 4.42771, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha12/block14"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block22" type="Spatial" parent="blocks/linha12"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 48.3708, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha12/block22"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block21" type="Spatial" parent="blocks/linha12"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 40.3132, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha12/block21"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block20" type="Spatial" parent="blocks/linha12"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 32.2657, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha12/block20"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block19" type="Spatial" parent="blocks/linha12"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 24.1922, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha12/block19"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block18" type="Spatial" parent="blocks/linha12"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 16.1347, 2.36746, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha12/block18"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block17" type="Spatial" parent="blocks/linha12"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 8.07709, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha12/block17"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="linha11" type="Spatial" parent="blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -24.3079 )
+
+[node name="block9" type="Spatial" parent="blocks/linha11"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 0, 0.647481, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha11/block9"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block10" type="Spatial" parent="blocks/linha11"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, -8.07346, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha11/block10"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block11" type="Spatial" parent="blocks/linha11"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, -16.131, 2.56429, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha11/block11"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block12" type="Spatial" parent="blocks/linha11"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, -24.1886, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha11/block12"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block16" type="Spatial" parent="blocks/linha11"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, -32.2361, 2.54985, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha11/block16"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block15" type="Spatial" parent="blocks/linha11"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, -40.3096, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha11/block15"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block14" type="Spatial" parent="blocks/linha11"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, -48.3671, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha11/block14"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block22" type="Spatial" parent="blocks/linha11"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 48.3708, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha11/block22"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block21" type="Spatial" parent="blocks/linha11"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 40.3132, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha11/block21"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block20" type="Spatial" parent="blocks/linha11"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 32.2657, 4.70866, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha11/block20"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block19" type="Spatial" parent="blocks/linha11"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 24.1922, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha11/block19"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block18" type="Spatial" parent="blocks/linha11"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 16.1347, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha11/block18"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block17" type="Spatial" parent="blocks/linha11"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 8.07709, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha11/block17"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="linha10" type="Spatial" parent="blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16.1969 )
+
+[node name="block9" type="Spatial" parent="blocks/linha10"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 0, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha10/block9"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block10" type="Spatial" parent="blocks/linha10"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, -8.07346, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha10/block10"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block11" type="Spatial" parent="blocks/linha10"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, -16.131, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha10/block11"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block12" type="Spatial" parent="blocks/linha10"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, -24.1886, -1.61414, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha10/block12"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block16" type="Spatial" parent="blocks/linha10"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, -32.2361, 0.697318, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha10/block16"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block15" type="Spatial" parent="blocks/linha10"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, -40.3096, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha10/block15"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block14" type="Spatial" parent="blocks/linha10"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, -48.3671, -2.60153, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha10/block14"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block22" type="Spatial" parent="blocks/linha10"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 48.3708, 4.17026, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha10/block22"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block21" type="Spatial" parent="blocks/linha10"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 40.3132, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha10/block21"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block20" type="Spatial" parent="blocks/linha10"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 32.2657, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha10/block20"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block19" type="Spatial" parent="blocks/linha10"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 24.1922, -2.3106, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha10/block19"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block18" type="Spatial" parent="blocks/linha10"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 16.1347, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha10/block18"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block17" type="Spatial" parent="blocks/linha10"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 8.07709, 4.16249, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha10/block17"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="linha9" type="Spatial" parent="blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8.10759 )
+
+[node name="block9" type="Spatial" parent="blocks/linha9"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 0, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha9/block9"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block10" type="Spatial" parent="blocks/linha9"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, -8.07346, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha9/block10"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block11" type="Spatial" parent="blocks/linha9"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, -16.131, 1.16162, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha9/block11"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block12" type="Spatial" parent="blocks/linha9"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, -24.1886, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha9/block12"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block16" type="Spatial" parent="blocks/linha9"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, -32.2361, 3.30606, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha9/block16"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block15" type="Spatial" parent="blocks/linha9"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, -40.3096, -2.35893, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha9/block15"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block14" type="Spatial" parent="blocks/linha9"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, -48.3671, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha9/block14"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block22" type="Spatial" parent="blocks/linha9"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 48.3708, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha9/block22"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block21" type="Spatial" parent="blocks/linha9"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 40.3132, 2.73589, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha9/block21"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block20" type="Spatial" parent="blocks/linha9"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 32.2657, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha9/block20"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block19" type="Spatial" parent="blocks/linha9"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 24.1922, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha9/block19"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block18" type="Spatial" parent="blocks/linha9"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 16.1347, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha9/block18"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="block17" type="Spatial" parent="blocks/linha9"]
+transform = Transform( 4, 0, 0, 0, 4.229, 0, 0, 0, 4, 8.07709, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="blocks/linha9/block17"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 7 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 120, 0, 0, 0, 60, 0, 0, 0, 120, 0, 6.06092, 0 )
+mesh = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, -46.814, 27.879, 17.241 )
+far = 500.0
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 36.1304, -1.17049 )
+visible = false
+light_energy = 0.17
+shadow_enabled = true
+
+[node name="SpotLight" type="SpotLight" parent="."]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 90.6481, 0 )
+light_energy = 0.72
+shadow_enabled = true
+spot_range = 113.883
+spot_angle = 84.711
+
+[node name="HUD_status" parent="." instance=ExtResource( 2 )]
+
+[node name="Menu_pause" parent="." instance=ExtResource( 1 )]
+visible = false

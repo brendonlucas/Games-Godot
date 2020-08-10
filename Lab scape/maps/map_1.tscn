@@ -755,7 +755,7 @@ material/0 = ExtResource( 5 )
 transform = Transform( 50, 0, 0, 0, -0.025, 3.89414e-06, 0, -9.73536e-09, -10, 1.018, 11.412, -68.7255 )
 
 [node name="MeshInstance" type="MeshInstance" parent="estruturas/nivel 2/pisos e teto/piso3"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -64.6685, 0 )
+transform = Transform( 1, 0, 0, 0, 1, -2.91038e-11, 0, 0, 1, 0, -64.6685, 0 )
 mesh = SubResource( 13 )
 material/0 = ExtResource( 12 )
 
@@ -1022,7 +1022,7 @@ material/0 = ExtResource( 3 )
 shape = SubResource( 7 )
 
 [node name="parede15" type="StaticBody" parent="estruturas/nivel 2/sala3"]
-transform = Transform( -1.18325e-06, 0, 0.216, 0, 3.5, 0, -3.08285, 0, -1.49376e-08, 10.6691, -0.219, -2.007 )
+transform = Transform( -1.18325e-06, 0, 0.216, 0, 3.5, 0, -3.08285, 0, -1.49376e-08, 12.1121, -0.219, -2.007 )
 
 [node name="MeshInstance" type="MeshInstance" parent="estruturas/nivel 2/sala3/parede15"]
 mesh = SubResource( 6 )
@@ -1061,7 +1061,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.944, -3.39, -3.187 )
 transform = Transform( -6.51683e-08, 0, 0.4, 0, 0.4, 0, -0.4, 0, -6.51683e-08, 0.190697, 0.0766535, 0.409586 )
 
 [node name="mesa2" parent="estruturas/nivel 2/sala3/mesas3" instance=ExtResource( 32 )]
-transform = Transform( 0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 13.1465, 0.0876637, -0.744247 )
+transform = Transform( 0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 14.4471, 0.0876637, -0.744247 )
 
 [node name="porta" type="Spatial" parent="estruturas/nivel 2"]
 transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 23.3695, 7.4249, -76.5488 )

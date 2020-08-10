@@ -21,12 +21,12 @@ _global_script_class_icons={
 [application]
 
 config/name="Lab scape"
-run/main_scene="res://maps/map_1.tscn"
+run/main_scene="res://Title_demo_loading.tscn"
 config/icon="res://icon.png"
 
-[display]
+[autoload]
 
-window/vsync/use_vsync=false
+background_load="*res://load_map/background_load.tscn"
 
 [input]
 

@@ -1,0 +1,5 @@
+[gd_scene format=2]
+
+[node name="Camera" type="Camera"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.84, 8.083 )
+far = 1000.0

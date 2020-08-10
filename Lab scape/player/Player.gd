@@ -5,8 +5,8 @@ const GRAVITY = 0.98
 const MAX_FALL_SPEED = 30
 var y_velo = 0
 var velocity = Vector3()
-const H_LOOK_SENS = 0.6
-const V_LOOK_SENS = 0.4
+const H_LOOK_SENS = 0.4
+const V_LOOK_SENS = 0.2
 var aceleracao = 1
 
 #nodes
