@@ -23,4 +23,5 @@ func instancia_objetos():
 	
 	
 func printar():
-	print("Coisou o coisa")
+	#print("Coisou o coisa")
+	pass

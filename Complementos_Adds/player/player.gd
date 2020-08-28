@@ -1,10 +1,14 @@
 extends KinematicBody
 
-export var MOVE_SPEED = 30
+export var MOVE_SPEED = 15
 var acelerecao = 3
 var desaceleracao = 9
+export var max_terminal_velocity : float = 54
+export var jump_power : float = 20
+export var force_gravity : float = 0.98
 
 const GRAVITY = -9.8
+var y_velocity : float
 var velocity = Vector3()
 
 const H_LOOK_SENS = 0.6
@@ -17,10 +21,13 @@ var animation
 # var controles
 var parando
 var correndo = false
+var moviments_active
 
 
 func _ready():
 	player = get_node(".")
+	player.rotation_degrees.y = 180
+	moviments_active = true
 	#animation = get_node("AnimationPlayer")
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
@@ -30,39 +37,26 @@ func _physics_process(delta):
 	dd(delta)
 	
 	
-func gg(delta):
-	var dir = Vector3()
-	var is_moving = false
-	parando = false
 
-	if is_moving and false:
-		animation.play("run")
-		correndo = true
-		
-		#code rotacao
-		
-	if !is_moving and correndo and false:
-		animation.play("stop run")
-		correndo = false
 
 func dd(delta):
-	cam = get_node("Camera").global_transform
+	cam = get_parent().get_node("target").global_transform
 	var dir = Vector3()
 	var is_moving = false
 	
-	if Input.is_action_pressed("frente"):
+	if Input.is_action_pressed("frente") and moviments_active:
 		dir += -cam.basis[2]
 		is_moving = true
 		
-	if Input.is_action_pressed("tras"):
+	if Input.is_action_pressed("tras") and moviments_active:
 		dir += cam.basis[2]
 		is_moving = true
 		
-	if Input.is_action_pressed("direita") :
-		dir += cam.basis[0]
+	if Input.is_action_pressed("direita") and moviments_active:
+		dir += +cam.basis[0]
 		is_moving = true
 		
-	if Input.is_action_pressed("esquerda"):
+	if Input.is_action_pressed("esquerda") and moviments_active:
 		dir += -cam.basis[0]
 		is_moving = true
 
@@ -84,6 +78,10 @@ func dd(delta):
 	velocity.x = hv.x
 	velocity.z = hv.z
 	
+	velocity.y -= force_gravity
+	if Input.is_action_just_pressed("jump") and is_on_floor():
+		velocity.y += jump_power
+	
 	velocity = move_and_slide(velocity, Vector3(0, 1, 0))
 
 	if is_moving:
@@ -91,3 +89,31 @@ func dd(delta):
 		var character_rot = player.get_rotation()
 		character_rot.y = angle
 		player.set_rotation(character_rot)
+
+
+func block_moviments(option):
+	if option == true:
+		moviments_active = option
+	elif option == false:
+		moviments_active = option
+		
+		
+		
+		
+		
+		
+		
+func gg(delta):
+	var dir = Vector3()
+	var is_moving = false
+	parando = false
+
+	if is_moving and false:
+		animation.play("run")
+		correndo = true
+		
+		#code rotacao
+		
+	if !is_moving and correndo and false:
+		animation.play("stop run")
+		correndo = false

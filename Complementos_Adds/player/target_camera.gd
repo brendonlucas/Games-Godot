@@ -12,12 +12,13 @@ var cam
 func _ready():
 	cam = get_node(".")
 	set_physics_process(true)
-	set_as_toplevel(true)
-
+	# set_as_toplevel(true)
+	
 	
 
 func _physics_process(delta):
-	segue(delta)
+	pass
+	# segue(delta)
 
 
 

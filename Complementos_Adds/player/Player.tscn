@@ -23,9 +23,6 @@ collision_layer = 2
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0 )
 spring_length = 5.0
 
-[node name="Camera" type="Camera" parent="CameraPivot/CameraBoom"]
-far = 500.0
-
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
 shape = SubResource( 1 )

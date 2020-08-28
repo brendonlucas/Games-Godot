@@ -3,8 +3,12 @@ extends Spatial
 var player
 var change_rot_active = false
 export(float, 0.1, 1) var mouse_sensitivity : float = 0.3
-export(float, -90, 0) var min_pitch : float = -90
-export(float, 0, 90) var max_pitch : float = 90
+export(float, -90, 0) var min_pitch : float = -70
+export(float, 0, 90) var max_pitch : float = 70
+
+
+#variaveis de controle
+var cam_active = true
 
 func _ready():
 	pass
@@ -12,27 +16,27 @@ func _ready():
 func _input(event):
 	var is_moving = false
 	
-	if Input.is_action_pressed("frente"):
+	if Input.is_action_pressed("frente") and cam_active:
 		is_moving = true
 		
-	if Input.is_action_pressed("tras"):
+	if Input.is_action_pressed("tras") and cam_active:
 		is_moving = true
 		
-	if Input.is_action_pressed("esquerda"):
+	if Input.is_action_pressed("esquerda") and cam_active:
 		is_moving = true
 	
-	if Input.is_action_pressed("direita"):
+	if Input.is_action_pressed("direita") and cam_active:
 		is_moving = true
 	
 	
 			
-	if event is InputEventMouseMotion and is_moving:
+	if event is InputEventMouseMotion and is_moving and cam_active:
 		rotation_degrees.y -= event.relative.x * mouse_sensitivity
 		$".".rotation_degrees.x -= event.relative.y * mouse_sensitivity
 		$".".rotation_degrees.x = clamp($".".rotation_degrees.x, min_pitch, max_pitch)
 	
 		
-	if event is InputEventMouseMotion and !is_moving:
+	if event is InputEventMouseMotion and !is_moving and cam_active:
 		change_rot_active = true
 		$".".rotation_degrees.y -= event.relative.x * mouse_sensitivity
 		$".".rotation_degrees.x -= event.relative.y * mouse_sensitivity
@@ -40,6 +44,14 @@ func _input(event):
 	
 	
 func _process(delta):
+	#player4 = get_tree().root.get_node("map_teste/Player_v4")
+	#translation = player4.translation
 	player = get_tree().root.get_node("map_teste/Player_v4")
 	translation = player.translation
 	
+
+func block_cam(option):
+	if option == true:
+		cam_active = option
+	elif option == false:
+		cam_active = option

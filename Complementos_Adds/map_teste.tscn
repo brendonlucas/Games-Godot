@@ -4,9 +4,9 @@
 [ext_resource path="res://HUDs/HUD_status.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Processos do map_teste.gd" type="Script" id=3]
 [ext_resource path="res://player/Player_v4.tscn" type="PackedScene" id=5]
-[ext_resource path="res://player/Player_v4.gd" type="Script" id=6]
 [ext_resource path="res://player/Camerat.tscn" type="PackedScene" id=7]
 [ext_resource path="res://player/Camera_target.gd" type="Script" id=8]
+[ext_resource path="res://player/player.gd" type="Script" id=9]
 
 [sub_resource type="CubeMesh" id=1]
 
@@ -66,7 +66,7 @@ script = ExtResource( 8 )
 
 [node name="Player_v4" parent="." instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 40.1373, 0 )
-script = ExtResource( 6 )
+script = ExtResource( 9 )
 
 [node name="chao" type="StaticBody" parent="."]
 transform = Transform( 20, 0, 0, 0, 1, 0, 0, 0, 20, 0, 38.5377, 0 )
@@ -98,6 +98,7 @@ shape = SubResource( 4 )
 
 [node name="blocks" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 3.79053, 0, 0, 0, 1, 0, 7.6865, 0 )
+visible = false
 
 [node name="linha" type="Spatial" parent="blocks"]
 
@@ -1324,7 +1325,8 @@ material/0 = SubResource( 6 )
 environment = SubResource( 7 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
-transform = Transform( 120, 0, 0, 0, 60, 0, 0, 0, 120, 0, 6.06092, 0 )
+transform = Transform( 120, 0, 0, 0, 60, 0, 0, 0, 120, -2.37296, 6.01942, 3.91048 )
+visible = false
 mesh = SubResource( 8 )
 material/0 = SubResource( 9 )
 
@@ -1341,6 +1343,8 @@ shadow_enabled = true
 [node name="SpotLight" type="SpotLight" parent="."]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 90.6481, 0 )
 light_energy = 0.72
+light_indirect_energy = 0.0
+light_specular = 0.16
 shadow_enabled = true
 spot_range = 113.883
 spot_angle = 84.711
