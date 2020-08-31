@@ -3,7 +3,7 @@
 [ext_resource path="res://Menu_pausa/Menu_pause.tscn" type="PackedScene" id=1]
 [ext_resource path="res://HUDs/HUD_status.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Processos do map_teste.gd" type="Script" id=3]
-[ext_resource path="res://player/Player_v4.tscn" type="PackedScene" id=5]
+[ext_resource path="res://player/2b/player_2b.tscn" type="PackedScene" id=4]
 [ext_resource path="res://player/Camerat.tscn" type="PackedScene" id=7]
 [ext_resource path="res://player/Camera_target.gd" type="Script" id=8]
 [ext_resource path="res://player/player.gd" type="Script" id=9]
@@ -61,15 +61,17 @@ emission_on_uv2 = false
 script = ExtResource( 3 )
 
 [node name="target" parent="." instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 40.137, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 39.4594, -4.55828 )
 script = ExtResource( 8 )
 
-[node name="Player_v4" parent="." instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 40.1373, 0 )
+[node name="Player_v4" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 39.333, 0 )
 script = ExtResource( 9 )
 
 [node name="chao" type="StaticBody" parent="."]
 transform = Transform( 20, 0, 0, 0, 1, 0, 0, 0, 20, 0, 38.5377, 0 )
+collision_layer = 3
+collision_mask = 3
 
 [node name="MeshInstance" type="MeshInstance" parent="chao"]
 transform = Transform( 1, 0, 0, 0, 0.145107, 0, 0, 0, 1, 0, 0, 0 )

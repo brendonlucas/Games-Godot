@@ -1,0 +1,114 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://props/Plane.tscn" type="PackedScene" id=1]
+[ext_resource path="res://player/2b/player_2b.tscn" type="PackedScene" id=2]
+[ext_resource path="res://player/Camerat.tscn" type="PackedScene" id=3]
+[ext_resource path="res://player/player.gd" type="Script" id=4]
+[ext_resource path="res://player/Camera_target.gd" type="Script" id=5]
+[ext_resource path="res://Menu_pausa/Menu_pause.tscn" type="PackedScene" id=6]
+[ext_resource path="res://props/Wall_Long.tscn" type="PackedScene" id=7]
+[ext_resource path="res://props/Platform_Window.tscn" type="PackedScene" id=8]
+[ext_resource path="res://props/Stairway_Short.tscn" type="PackedScene" id=9]
+
+[sub_resource type="ProceduralSky" id=1]
+sky_top_color = Color( 0.352941, 0.721569, 0.92549, 1 )
+sky_horizon_color = Color( 0.505882, 0.717647, 0.882353, 1 )
+ground_bottom_color = Color( 0.976471, 0.984314, 0.992157, 1 )
+ground_horizon_color = Color( 0.905882, 0.933333, 0.956863, 1 )
+ground_curve = 0.022974
+
+[sub_resource type="Environment" id=2]
+background_mode = 2
+background_sky = SubResource( 1 )
+ambient_light_color = Color( 1, 1, 1, 1 )
+ambient_light_sky_contribution = 0.0
+glow_enabled = true
+glow_blend_mode = 1
+
+[node name="Map_limpo" type="Spatial"]
+
+[node name="chao" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.195703, 0 )
+
+[node name="Plane" parent="chao" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, 0, -0.195703, 0 )
+
+[node name="Plane13" parent="chao" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, -1, 6.51683e-07, 0, -3.25841e-07, -2, 0, 3.84784, -5.6462 )
+
+[node name="Plane2" parent="chao" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, -16, -0.195703, 0 )
+
+[node name="Plane3" parent="chao" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, 16, -0.195703, 0 )
+
+[node name="Plane4" parent="chao" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, 0, -0.195703, 15.9694 )
+
+[node name="Plane5" parent="chao" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, -16, -0.195703, 15.9694 )
+
+[node name="Plane6" parent="chao" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, 16, -0.195703, 15.9694 )
+
+[node name="Plane7" parent="chao" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, 0, -0.195703, -31.9708 )
+
+[node name="Plane8" parent="chao" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, -16, -0.195703, -31.9708 )
+
+[node name="Plane9" parent="chao" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, 16, -0.195703, -31.9708 )
+
+[node name="Plane10" parent="chao" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, 0, -0.195703, -16.0014 )
+
+[node name="Plane11" parent="chao" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, -16, -0.195703, -16.0014 )
+
+[node name="Plane12" parent="chao" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, 16, -0.195703, -16.0014 )
+
+[node name="Player_v4" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.679659, 0 )
+script = ExtResource( 4 )
+
+[node name="target" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.55916, 0 )
+script = ExtResource( 5 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 1, 0, 0, 0, -0.725146, 0.688595, 0, -0.688595, -0.725146, 0, 14.7138, 16.5043 )
+light_indirect_energy = 0.0
+light_specular = 0.14
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 2 )
+
+[node name="Menu_pause" parent="." instance=ExtResource( 6 )]
+visible = false
+
+[node name="Wall_Long" parent="." instance=ExtResource( 7 )]
+transform = Transform( 0, 0, -1, 0, 1, 0, 1, 0, 0, 4.1303, 1.771, -7.95544 )
+
+[node name="Wall_Long2" parent="." instance=ExtResource( 7 )]
+transform = Transform( 0, 0, -1, 0, 1, 0, 1, 0, 0, 12.1281, 1.771, -7.955 )
+
+[node name="Platform_Window" parent="." instance=ExtResource( 8 )]
+transform = Transform( 0, 0, -1, 0, 1, 0, 1, 0, 0, -3.85589, 1.798, -7.966 )
+
+[node name="Spatial" type="Spatial" parent="."]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 4.19728, 0, -2.88849 )
+
+[node name="Wall_Long3" parent="Spatial" instance=ExtResource( 7 )]
+transform = Transform( 0, 0, -1, 0, 1, 0, 1, 0, 0, -0.0669789, 1.771, -0.0239973 )
+
+[node name="Wall_Long4" parent="Spatial" instance=ExtResource( 7 )]
+transform = Transform( 0, 0, -1, 0, 1, 0, 1, 0, 0, 7.93083, 1.771, -0.0235624 )
+
+[node name="Platform_Window2" parent="Spatial" instance=ExtResource( 8 )]
+transform = Transform( 0, 0, -1, 0, 1, 0, 1, 0, 0, -8.05317, 1.798, -0.0345626 )
+
+[node name="Stairway_Short" parent="." instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5062, 0.0139174, -5.40918 )

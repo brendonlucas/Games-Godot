@@ -4,7 +4,7 @@ var player
 var change_rot_active = false
 export(float, 0.1, 1) var mouse_sensitivity : float = 0.3
 export(float, -90, 0) var min_pitch : float = -70
-export(float, 0, 90) var max_pitch : float = 70
+export(float, 0, 90) var max_pitch : float = 50
 
 
 #variaveis de controle
@@ -28,8 +28,18 @@ func _input(event):
 	if Input.is_action_pressed("direita") and cam_active:
 		is_moving = true
 	
-	
-			
+	if Input.is_action_pressed("zoom_in"):
+		var anterior = $CameraBoom.get_length()
+		if anterior >= 1:
+			var novo = anterior - 0.1
+			$CameraBoom.set_length(novo)
+		
+	if Input.is_action_pressed("zoom_out"):
+		var anterior = $CameraBoom.get_length()
+		if anterior <= 7:
+			var novo = anterior + 0.1
+			$CameraBoom.set_length(novo)
+		
 	if event is InputEventMouseMotion and is_moving and cam_active:
 		rotation_degrees.y -= event.relative.x * mouse_sensitivity
 		$".".rotation_degrees.x -= event.relative.y * mouse_sensitivity
@@ -46,9 +56,11 @@ func _input(event):
 func _process(delta):
 	#player4 = get_tree().root.get_node("map_teste/Player_v4")
 	#translation = player4.translation
-	player = get_tree().root.get_node("map_teste/Player_v4")
+	#player = get_tree().root.get_node("map_teste/Player_v4")
+	player = get_tree().root.get_node("Map_limpo/Player_v4")
 	translation = player.translation
-	
+	translation.y = player.translation.y + 1.8
+
 
 func block_cam(option):
 	if option == true:
